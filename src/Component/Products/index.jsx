@@ -25,8 +25,9 @@ function Products() {
 									title={item.itemName}
 								/>
 								<CardContent>
-									<Typography gutterBottom variant="h5" component="div">
-										{item.itemName}
+									<Typography style={{display:'flex', justifyContent:'space-between'}} gutterBottom variant="h5" component="div">
+										<div>{item.itemName[0].toUpperCase()+item.itemName.slice(1)}</div>
+										<div>${item.itemPrice}</div>
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										{item.itemDescription}
