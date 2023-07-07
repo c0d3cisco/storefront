@@ -1,5 +1,5 @@
 const initialState = {
-	category: 'Make a selection',
+	category: 'electronics',
 }
 
 function categoryReducer(state = initialState, action) {
