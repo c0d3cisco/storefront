@@ -1,40 +1,50 @@
-import inventory from '../../store/inventory.json'
-import { useDispatch } from 'react-redux'
-import { setCategory, clearCategory } from '../../store/categories'
-import { Box, Divider } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCategory, clearCategory } from '../../store/actions.js'
+import { ButtonGroup, Button } from '@mui/material'
+import { useEffect } from 'react'
+import { getCategories } from '../../store/categories'
+import { getProducts } from '../../store/products'
 
 function Category() {
+  const dispatch = useDispatch()
 
-	const dispatch = useDispatch()
+  const { category } = useSelector(state => state)
 
-	return (
-		<>
-			<h3>Browse our Categories</h3>
-			<Box sx={{ display: 'flex' }}>
-				{Object.keys(inventory.products).map((item) => {
-					item = item.toUpperCase()
-					return (
-						<div key={`categoryID-${item}`}>
-							<div
-								style={{ padding: '0 10px' }}
-								onClick={() => dispatch(setCategory(item))}
-							>
-								{item}
-							</div>
-							<Divider orientation="vertical" flexItem />
-						</div>
-					)
-				})}
-				<div
-					key={`categoryID-reset`}
-					style={{ padding: '0 10px' }}
-					onClick={() => dispatch(clearCategory())}
-				>
-					X
-				</div>
-			</Box>
-		</>
-	)
+  const { categories } = category
+
+  useEffect(() => {
+    dispatch(getCategories())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  function handleClick(activeCategory){
+    dispatch(setCategory(activeCategory))
+    dispatch(getProducts(activeCategory))
+  }
+
+  return (
+    <>
+      <h3>Browse our Categories</h3>
+      <ButtonGroup variant="text" aria-label="text button group">
+        {categories.map((category) => {
+          return (
+            <Button
+              key={`categoryID-${category.name}`}
+              onClick={() => handleClick(category.name)}
+            >
+              {category.name.toUpperCase()}
+            </Button>
+          )
+        })}
+        <Button
+          key={`categoryID-reset`}
+          onClick={() => dispatch(clearCategory())}
+        >
+          X
+        </Button>
+      </ButtonGroup>
+    </>
+  )
 }
 
-export default Category
+export default Category;
