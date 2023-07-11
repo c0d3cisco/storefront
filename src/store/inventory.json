@@ -1,91 +1,82 @@
 {
-	"products": {
-		"electronic": {
-			"description": "Latest and Fastest Electronic Products",
-			"inventory": [
-				{
-					"itemName": "laptop",
-					"itemCategory": "electronic",
-					"itemDescription": "Latest and Fastest Laptop",
-					"itemPrice": 1000,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?laptop"
-				},
-				{
-					"itemName": "mobile",
-					"itemCategory": "electronic",
-					"itemDescription": "Latest and Fastest Mobile",
-					"itemPrice": 500,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?mobile"
-				},
-				{
-					"itemName": "tablet",
-					"itemCategory": "electronic",
-					"itemDescription": "Latest and Fastest Tablet",
-					"itemPrice": 300,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?tablet"
-				}
-			]
-		},
-		"clothing": {
-			"description": "Most Fashionable Clothing Products",
-			"inventory": [
-				{
-					"itemName": "shirt",
-					"itemCategory": "clothing",
-					"itemDescription": "Most Fashionable Shirt",
-					"itemPrice": 100,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?shirt"
-				},
-				{
-					"itemName": "pants",
-					"itemCategory": "clothing",
-					"itemDescription": "Most Fashionable Pant",
-					"itemPrice": 50,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?pant"
-				},
-				{
-					"itemName": "shoe",
-					"itemCategory": "clothing",
-					"itemDescription": "Most Fashionable Shoe",
-					"itemPrice": 30,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?shoe"
-				}
-			]
-		},
-		"toys": {
-			"description": "Coolest Toys Products",
-			"inventory": [
-				{
-					"itemName": "car",
-					"itemCategory": "toys",
-					"itemDescription": "Coolest Car",
-					"itemPrice": 10,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?car"
-				},
-				{
-					"itemName": "bike",
-					"itemCategory": "toys",
-					"itemDescription": "Coolest Bike",
-					"itemPrice": 5,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?bike"
-				},
-				{
-					"itemName": "ball",
-					"itemCategory": "toys",
-					"itemDescription": "Coolest Ball",
-					"itemPrice": 3,
-					"itemQuantity": 10,
-					"itemImage": "https://source.unsplash.com/random?ball"
-				}
-			]
-		}
-	}
+  "categories": [
+    { "name": "electronics", "description": "Electronics" },
+    { "name": "clothing", "description": "Clothing" },
+    { "name": "toys", "description": "Toys" }
+  ],
+  "products": [
+    {
+      "name": "laptop",
+      "category": "electronics",
+      "price": 1000,
+      "inStock": 10,
+      "description": "Latest and Fastest Laptop",
+      "itemImage": "https://source.unsplash.com/random?laptop"
+    },
+    {
+      "name": "mobile",
+      "category": "electronics",
+      "price": 500,
+      "inStock": 10,
+      "description": "Latest and Fastest Mobile",
+      "itemImage": "https://source.unsplash.com/random?mobile"
+    },
+    {
+      "name": "tablet",
+      "category": "electronics",
+      "price": 300,
+      "inStock": 10,
+      "description": "Latest and Fastest Tablet",
+      "itemImage": "https://source.unsplash.com/random?tablet"
+    },
+    {
+      "name": "shirt",
+      "category": "clothing",
+      "price": 100,
+      "inStock": 10,
+      "description": "Most Fashionable Shirt",
+      "itemImage": "https://source.unsplash.com/random?shirt"
+    },
+    {
+      "name": "pants",
+      "category": "clothing",
+      "price": 50,
+      "inStock": 10,
+      "description": "Most Fashionable Pant",
+      "itemImage": "https://source.unsplash.com/random?pant"
+    },
+    {
+      "name": "shoe",
+      "category": "clothing",
+      "price": 30,
+      "inStock": 10,
+      "description": "Most Fashionable Shoe",
+      "itemImage": "https://source.unsplash.com/random?shoe"
+    },
+    {
+      "name": "car",
+      "category": "toys",
+      "price": 10,
+      "inStock": 10,
+      "description": "Coolest Car",
+      "itemImage": "https://source.unsplash.com/random?car"
+    },
+    {
+      "name": "bike",
+      "category": "toys",
+      "price": 5,
+      "inStock": 10,
+      "description": "Coolest Bike",
+      "itemImage": "https://source.unsplash.com/random?bike"
+    },
+    {
+      "name": "ball",
+      "category": "toys",
+      "price": 3,
+      "inStock": 10,
+      "description": "Coolest Ball",
+      "itemImage": "https://source.unsplash.com/random?ball"
+    }
+  ],
+  "activeCategory": "Deactivated"
 }

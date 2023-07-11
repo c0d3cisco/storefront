@@ -1,4 +1,5 @@
 import { Box, Divider } from "@mui/material"
+import { useSelector } from "react-redux"
 
 function Header() {
 
@@ -11,11 +12,13 @@ function Header() {
 		padding: '0 0.5em',
 	}
 
+	const { cart } = useSelector(state => state)
+	
 	return (
 		<>
 			<Box sx={headerCSS}>
 				<h1>OUR STORE</h1>
-				<div>Cart (##)</div>
+				<div>Cart {`(${cart.length})`}</div>
 			</Box>
 			<Divider sx={{margin: '0 -0.5em 0 -0.5em'}} />
 		</>
