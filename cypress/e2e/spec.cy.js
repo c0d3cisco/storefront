@@ -3,30 +3,60 @@
 describe('My Storefront App', () => {
   it('adds and deletes items to the card', () => {
 
-    cy.visit('http://localhost:5173/storefront/')
+    cy.visit('http://localhost:5173/storefront/');
 
-    cy.contains('Cart (0)').should('be.visible')
-    cy.contains('ELECTRONIC').click()
+    cy.contains('Cart (0)').should('be.visible');
 
-    cy.contains('ADD TO CART').click()
-    cy.contains('ADD TO CART').click()
+    cy.contains('ELECTRONIC').click();
 
-    cy.contains('Cart (2)').should('be.visible')
-    cy.get('[data-testid="DeleteIcon"]').first().click()
+    cy.get('[data-testid="stockDivTest"]').should('be.visible');
 
-    cy.contains('Cart (1)').should('be.visible')
-    cy.get('[data-testid="DeleteIcon"]').click()
+    cy.get('[data-testid="stockDivTest"]').first().invoke('text').as('startValue');
+
+
+
+
+    cy.get('@startValue').then((startValue) => {
+      const startValueInt = parseInt(startValue, 10);
+      cy.contains('ADD TO CART').click();
+      cy.wait(500); // Wait for 2 seconds
+
+      cy.contains('ADD TO CART').click();
+      cy.wait(500); // Wait for 2 seconds
+
+      cy.get('[data-testid="stockDivTest"]').first().invoke('text').then((updatedValue) => {
+        const updatedValueInt = parseInt(updatedValue, 10);
+        expect(updatedValueInt).to.eq(startValueInt - 2);
+      });
+    });
+
+
+    cy.get('@startValue').then((startValue) => {
+      const startValueInt = parseInt(startValue, 10);
+      cy.contains('Cart (2)').should('be.visible')
+      cy.get('[data-testid="DeleteIcon"]').first().click()
+      cy.wait(500); // Wait for 2 seconds
+
+      cy.contains('Cart (1)').should('be.visible')
+      cy.get('[data-testid="DeleteIcon"]').click()
+      cy.wait(500); // Wait for 2 seconds
+
+      cy.get('[data-testid="stockDivTest"]').first().invoke('text').then((updatedValue) => {
+        const updatedValueInt = parseInt(updatedValue, 10);
+        expect(updatedValueInt).to.eq(startValueInt + 2);
+      });
+    });
 
     cy.contains('Cart (0)').should('be.visible')
 
   })
 
-  it('runs out of stock', () => {
+  it('loads the card page correctly', () => {
 
     cy.visit('http://localhost:5173/storefront/')
 
     cy.contains('Cart (0)').should('be.visible')
-    cy.contains('TOYS').click()
+    cy.contains('FOOD').click()
 
     cy.contains('ADD TO CART').click()
     cy.contains('ADD TO CART').click()
@@ -39,15 +69,9 @@ describe('My Storefront App', () => {
     cy.contains('ADD TO CART').click()
     cy.contains('ADD TO CART').click()
 
-    cy.contains('Cart (10)').should('be.visible')
-    cy.get('[data-testid="stockDivTest"]').should('have.string', 'Out of Stock')
+    cy.contains('Cart (10)').click()
 
-    // cy.get('[data-testid="DeleteIcon"]').first().click()
-
-    // cy.contains('Cart (1)').should('be.visible')
-    // cy.get('[data-testid="DeleteIcon"]').click()
-    
-    // cy.contains('Cart (0)').should('be.visible')
+    cy.get('tr').should('have.length', 12)
 
   })
 
