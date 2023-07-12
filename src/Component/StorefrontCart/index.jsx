@@ -3,13 +3,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { returnProduct } from "../../store/products"
+import { remove } from "../../store/cart";
 
 function Cart() {
 	const dispatch = useDispatch()
-	const { cart } = useSelector(state => state)
+	const cart = useSelector(state => state.cart)
 
 	const handleDelete = (item) => {
 		dispatch(returnProduct(item));
+		dispatch(remove(item));
 	}
 
 	return (

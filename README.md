@@ -1,17 +1,10 @@
-# Storefront - A Redux Story
+# Storefront - Phase 4 Redux Toolkit
 
 **Author:** Francisco Sanchez
 
-**Version**: 1.0.0
-
 ## Overview
 
-Application that can be used to manage the state of a storefront. The application will be built in multiple phases, incrementally introducing new state management techniques and refactoring the code base along the way.
-
-## Feature Tasks & Requirements
-
-July 6, 2023 - v1.0.0 - Phase 1\
-Today, we begin the first of a 4-Phase build of the Storefront application, written in React. In this first phase, our goal is to setup the basic scaffolding of the application with initial styling and basic behaviors, in place. Predominantly, focus and time was taken to understand Redux and how to implement it in the application.
+Application that can be used to manage the state of a storefront. The application will be built in multiple phases, incrementally introducing new state management techniques and refactoring the code base along the way. The application will have the ability to add and remove items from a virtual shopping cart, checkout and edit the cart contents. The application will also have a live-updating product list, with product details being fetched from a remote API. The application utilizes Redux Toolkit to manage the state of the application.
 
 ## Getting Started
 
@@ -20,7 +13,13 @@ Today, we begin the first of a 4-Phase build of the Storefront application, writ
 3. Run `cp storefront` and `npn install`
 4. Run `npm start`. A browser window will open with the React app.
 
+## Testing
+
+Testing was done with Cypress. To run the tests, run `npx cypress open` in the terminal. A Cypress window will open. Follow the prompts to run the E2E tests.
+
+[Cypress Test Results](./cypress/e2e/spec.cy.js)
+
 ## Architecture
 
-Phase 1 UML\
-![UML for Lab36](./public/lab36UML.png)
+Phase 4 UML\
+![UML for Lab39](./public/lab39UML.png)

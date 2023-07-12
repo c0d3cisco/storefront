@@ -1,16 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setCategory, clearCategory } from '../../store/actions.js'
+// import { clearCategory } from '../../store/actions.js'
 import { ButtonGroup, Button } from '@mui/material'
 import { useEffect } from 'react'
-import { getCategories } from '../../store/categories'
-import { getProducts } from '../../store/products'
+import { getCategories, setCategory, reset } from '../../store/categories'
+import { getProductsAPI } from '../../store/products'
 
 function Category() {
   const dispatch = useDispatch()
 
-  const { category } = useSelector(state => state)
-
-  const { categories } = category
+  const { categories } = useSelector(state => state.category)
 
   useEffect(() => {
     dispatch(getCategories())
@@ -18,8 +16,9 @@ function Category() {
   }, [])
 
   function handleClick(activeCategory){
+    // console.log(activeCategory, 'activeCategory')
     dispatch(setCategory(activeCategory))
-    dispatch(getProducts(activeCategory))
+    dispatch(getProductsAPI(activeCategory))
   }
 
   return (
@@ -38,7 +37,7 @@ function Category() {
         })}
         <Button
           key={`categoryID-reset`}
-          onClick={() => dispatch(clearCategory())}
+          onClick={() => dispatch(reset())}
         >
           X
         </Button>

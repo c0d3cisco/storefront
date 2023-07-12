@@ -1,5 +1,6 @@
-import { Box, Divider } from "@mui/material"
+import { Box, Button, Divider } from "@mui/material"
 import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 
 function Header() {
 
@@ -12,15 +13,25 @@ function Header() {
 		padding: '0 0.5em',
 	}
 
-	const { cart } = useSelector(state => state)
-	
+	const cart = useSelector(state => state.cart);
+
 	return (
 		<>
 			<Box sx={headerCSS}>
-				<h1>OUR STORE</h1>
-				<div>Cart {`(${cart.length})`}</div>
+			<Button
+				size="small"
+				component={Link}
+				to={`/storefront/`}
+			><h1>OUR STORE</h1></Button>
+				
+				<Button
+					component={Link}
+					to={`/storefront/cart`}
+				>
+					Cart {`(${cart.length})`}
+				</Button>
 			</Box>
-			<Divider sx={{margin: '0 -0.5em 0 -0.5em'}} />
+			<Divider sx={{ margin: '0 -0.5em 0 -0.5em' }} />
 		</>
 	)
 }
